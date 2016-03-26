@@ -14,3 +14,4 @@ Resume Critique Website for a Final Project. Written in PHP and uses a MySQL dat
 - [ ] HTML/SQL Injection Attack Testing
 - [ ] Contact Us Page
 - [ ] Documentation
+- [ ] Holla!
