@@ -1,16 +1,18 @@
 Web-Development-Project
 =======================
-Resume Critique Website for a Final Project. Written in PHP and uses a MySQL database.
+Resume Critique Website for a Final Project. Written in PHP and uses a MySQL 
+database. dbaccess.php and assets/recaptcha/secret.php are .gitignored and 
+can be found in the shared google drive folder.
 
 ######TODO:
 
-- [ ] Layout Design
+- [x] Layout Design
 - [x] Database Setup
-- [ ] Account Creation
+- [x] Account Creation
 - [ ] User Authentication (Logging in and out)
 - [ ] Uploading files (Resumes)
 - [ ] Ranking and Comment System
-- [ ] Forms and Form Validation
+- [x] Forms and Form Validation
 - [ ] HTML/SQL Injection Attack Testing
 - [ ] Contact Us Page
 - [ ] Documentation

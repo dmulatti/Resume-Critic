@@ -1,0 +1,5 @@
+# ignoring crededtials for recaptcha verification and database access
+# they are available in the shared google drive folder
+
+dbaccess.php
+assets/recaptcha/secret.php
