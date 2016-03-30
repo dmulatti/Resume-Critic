@@ -5,7 +5,8 @@ $(document).ready(function() {
             uwinid: {
                 required: true,
                 maxlength: 20,
-                pattern: /^[a-zA-Z0-9]+$/
+                pattern: /^[a-zA-Z0-9]+$/,
+                remote: 'checkuwinid.php'
             },
             password: {
                 required: true,
@@ -29,7 +30,8 @@ $(document).ready(function() {
 
         messages: {
             uwinid: {
-                pattern: "Alphanumeric characters only. You don't need to add @uwindsor.ca!"
+                pattern: "Alphanumeric characters only. You don't need to add @uwindsor.ca!",
+                remote: "Account already exists!"
             },
             fullname: {
                 pattern: "No special characters, please."
