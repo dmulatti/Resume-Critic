@@ -1,8 +1,7 @@
 <?php
 if(empty($_POST['uwinid']) || empty($_POST['password']) || empty($_POST['fullname'])){
-    echo 'Not enough info!';
     header("Location: newusererror.php");
-    die;
+    die ('not enough info');
 }
 
 require ('assets/recaptcha/autoload.php');
@@ -14,9 +13,8 @@ $recaptcha = new \ReCaptcha\ReCaptcha($secret);
 $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 if (!$resp->isSuccess()) {
     $errors = $resp->getErrorCodes();
-    echo 'Captcha Not Verified!';
     header("Location: newusererror.php");
-    die;
+    die('Captcha not verified');
 }
 
 
@@ -28,7 +26,12 @@ $fullname = mb_convert_case($_POST['fullname'], MB_CASE_TITLE);
 include_once "dbaccess.php"; //produces $db object
 $stmt = $db->prepare("INSERT INTO users (uwinid, fullname, password) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $uwinid, $fullname, $password);
-$stmt->execute();
+$result = $stmt->execute();
+
+if ($result == false){
+    header("Location: newusererror.php");
+    die('error adding user');
+}
 $stmt->free_result();
 
 
