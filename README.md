@@ -5,7 +5,7 @@ Resume Critique Website for a Final Project. Written in PHP and uses a MySQL dat
 ######TODO:
 
 - [ ] Layout Design
-- [ ] Database Setup
+- [x] Database Setup
 - [ ] Account Creation
 - [ ] User Authentication (Logging in and out)
 - [ ] Uploading files (Resumes)
