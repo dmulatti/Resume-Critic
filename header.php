@@ -40,6 +40,7 @@ $_SESSION['logged_in'] = 0;
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+					<li><a href="admin.php">Admin</a></li>
                     <li><a href="createaccount.php">Create Account</a></li>
 					 <li><a href="contact.php">Contact Us</a></li>
 					<li>
@@ -48,7 +49,7 @@ $_SESSION['logged_in'] = 0;
 							Hello NAME
 							<input type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
-					
+
 					<?php else : ?>
 						<form id='login' action='login.php' method='post'>
 							<fieldset>
@@ -57,12 +58,12 @@ $_SESSION['logged_in'] = 0;
 								<input type='text' name='username' id='username'  maxlength="20" />
 								<label class = 'loginlabel' for='password' >Password:</label>
 								<input type='password' name='password' id='password' maxlength="60" />
-								<input type='submit' name='LoginButton' value='Login' /> 
+								<input type='submit' name='LoginButton' value='Login' />
 							</fieldset>
 						</form>
 					<?php endif; ?>
 					</li>
-                   
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
