@@ -1,10 +1,11 @@
-<?php include_once 'header.php'; ?>
+<?php 	include_once 'header.php';
+		include_once 'dbaccess.php';
+?>
 
 <!-- Page Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-
 
             <!-- Page Heading -->
             <div class="text-center">
@@ -12,15 +13,33 @@
             </div>
             <hr>
 
-            <p class="lead text-center">
-                Soon enough this will have content on it.
-            </p>
-
-
+			<!-- Table -->
+			<h3>Tables</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date Uploaded</th>
+						<th>Rating</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$sql = "SELECT * FROM users WHERE hasuploaded = 1";
+						$result = mysql_query($sql);
+						while($row = mysql_fetch_array($result)){
+							$name = $row['fullname'];
+							$date = $row['upload_date'];
+							$rating = $row['rating'];
+							$uwinid = $row['uwinid'];
+							echo "<tr><td><a href=\"".$uwinid.".pdf\" ".$name."</a></td><td>".$date."</td><td>".$rating."</td></tr>";
+						}										
+					?>
+				</tbody>
+			</table>
         </div>
     </div>
     <!-- /.row -->
 </div>
 <!-- /.container-fluid -->
-
 <?php include_once 'footer.php' ?>

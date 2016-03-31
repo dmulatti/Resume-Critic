@@ -3,11 +3,12 @@
 *  page. This can be used for extra scripts and whatnot.
 */
 session_start();
-$_SESSION['logged_in'] = false;
+$_SESSION['logged_in'] = 0;
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
     <title>Resume Critic</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
