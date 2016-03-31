@@ -14,5 +14,5 @@ can be found in the shared google drive folder.
 - [ ] Ranking and Comment System
 - [x] Forms and Form Validation
 - [ ] HTML/SQL Injection Attack Testing
-- [ ] Contact Us Page
+- [x] Contact Us Page
 - [ ] Documentation

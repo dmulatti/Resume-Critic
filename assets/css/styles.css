@@ -49,3 +49,36 @@ body { padding-top: 70px; }
 	  width: 50%;
 	  margin:0 auto;
   }
+
+  .error:not(.form-control){
+      color: red;
+  }
+  .error:focus {
+  border-color: red;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(193, 66, 66, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(193, 66, 66, .6);
+  }
+
+
+  img.emoji {
+     height: 1em;
+     width: 1em;
+     margin: 0 .05em 0 .1em;
+     vertical-align: -0.1em;
+  }
+
+  /* for footer */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin: 0 0 60px;
+  }
+  footer {
+    text-align:center;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    height: 30px;
+  }
