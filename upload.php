@@ -16,7 +16,7 @@
 			}
 			else {
 				echo "<p>There was a problem uploading the file.</p>";
-				//header("L3ewocation: /resumeupload.php?test=failed");
+				//header("Location: /resumeupload.php?test=failed");
 			}
 		} 
 ?>
