@@ -27,7 +27,7 @@ include_once 'header.php'; ?>
 
                 <!-- Forms -->
                 <div class="well">
-                    <form id="newuserform" class="required" method="POST" action="newuser.php">
+                    <form id="newuserform" class="required" method="POST" action="createaccount_go.php">
                         <div class="form-group">
                             <label for="uwinid">UWinID</label>
                             <input type="text" class="form-control" id="uwinid" name="uwinid" placeholder="UWinID" required>

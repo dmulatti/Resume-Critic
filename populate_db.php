@@ -16,18 +16,19 @@ function addToDB($db, $uwinid, $fullname, $password, $rating, $hasuploaded){
     return $result;
 }
 
-
-include_once "dbaccess.php"; //produces $db object
 include_once 'header.php';
+include_once "dbaccess.php"; //produces $db object
+
 
 $result1 = addToDB($db, "testone", "Test One", "password", "2", "0");
 $result2 = addToDB($db, "testtwo", "Test Two", "password", "3.4", "1");
 $result3 = addToDB($db, "testthree", "Test Three", "password", "2.5", "0");
-$result4 = addToDB($db, "testfour", "Test Four", "password", "5", "1");
+$result4 = addToDB($db, "testfour", "Test Four", "password", "4.5", "1");
+$result5 = addToDB($db, "admin", "Admin Dude", "password", "5", "1");
 
 
 
-if (($result1 && $result2 && $result3 && $result4) == true)
+if (($result1 && $result2 && $result3 && $result4 && $result5) == true)
     echo '<h1>Success!</h1>';
 else
     echo '<h1>Something Failed.';

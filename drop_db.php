@@ -1,6 +1,12 @@
 <?php
-include_once 'dbaccess.php';
 include_once 'header.php';
+
+if ($_SESSION['logged_in'] != 3){
+    echo '<h1>Please log in as admin!</h1>';
+    die();
+}
+include_once 'dbaccess.php';
+
 
 if ($db->multi_query('DROP TABLE comments; DROP TABLE users;') === true)
     echo '<h1>Success! Tables Dropped.</h1>';

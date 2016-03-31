@@ -1,6 +1,12 @@
 <?php
-
 include_once 'header.php';
+
+
+if ($_SESSION['logged_in'] != 3){
+    echo '<h1>Please log in as admin!</h1>';
+    die();
+}
+
 include_once 'dbaccess.php';
 
 $usersdbexists = $db->query('SELECT 1 FROM users');
@@ -23,16 +29,18 @@ else
 
             <!-- Page Heading -->
             <div class="text-center">
-                <h1>Admin Controls</h1>
+                <h1>Admin Control Panel</h1>
             </div>
             <hr>
 
 
             <h3>Database Status: <?php echo $dbstatus; ?></h3>
+            <hr>
 
             <?php if ($dbexists){ ?>
+                <button id="viewdb" class="btn btn-primary">View Database</button> <hr>
+                <button id="populatedb" class="btn btn-primary">Populate Database With Sample Data</button> <hr>
                 <button id="dropdb" class="btn btn-danger">Drop Database</button>
-                <button id="populatedb" class="btn btn-primary">Populate Database With Sample Data</button>
                 <script type="text/javascript">
                     document.getElementById("dropdb").onclick = function () {
                         if (window.confirm("Are you sure? All user data will be gone forever!"))
@@ -40,6 +48,9 @@ else
                             };
                     document.getElementById("populatedb").onclick = function () {
                             location.href = "/populate_db.php";
+                            };
+                    document.getElementById("viewdb").onclick = function () {
+                            location.href = "/view_db.php";
                             };
                 </script>
 

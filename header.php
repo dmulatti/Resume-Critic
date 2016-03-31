@@ -13,6 +13,11 @@ session_start();
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+	</script>
 	<?php
     if (isset($headextra))
         echo $headextra;
@@ -39,21 +44,23 @@ session_start();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-				
+
 					<? if ($_SESSION['logged_in'] > 0) : ?>
+					    <li><a href="edituser.php">Edit User Info</a></li>
 						<li><a href="resumeupload.php">Upload Resume</a></li>
 					<?php else : ?>
-						<li > <a data-toggle="tooltip" data-placement="top" title="Need to be logged in!">Upload Resume</a></li>
+						<li><a href="createaccount.php">Create Account</a></li>
+						<li > <a data-toggle="tooltip" data-placement="bottom" title="Need to be logged in!">Upload Resume</a></li>
 					<?php endif; ?>
-					
+
 					<?php if ($_SESSION['logged_in'] == 3) : ?>
 						<li><a href="admin.php">Admin</a></li>
 					<?php endif; ?>
-					
-                    <li><a href="createaccount.php">Create Account</a></li>
-					
+
+
+
 					<li><a href="contact.php">Contact Us</a></li>
-					
+
 					<li>
 					<?php if ($_SESSION['logged_in'] > 0) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
