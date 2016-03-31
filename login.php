@@ -28,7 +28,11 @@
 
 	if($count == 1 && $check){
 		$_SESSION['uwinid'] = $myusername;
-		$_SESSION['logged_in'] = 1;
+		if($myusername == "admin")
+			$_SESSION['logged_in'] = 3;
+		else
+			$_SESSION['logged_in'] = 1;
+		endif;
 		header("Location: /index.php"); //to redirect back to "index.php" after logging out
 	}
 	else {

@@ -3,7 +3,6 @@
 *  page. This can be used for extra scripts and whatnot.
 */
 session_start();
-$_SESSION['logged_in'] = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,11 +39,13 @@ $_SESSION['logged_in'] = 0;
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+					<?php if ($_SESSION['logged_in'] == 3) : ?>
 					<li><a href="admin.php">Admin</a></li>
+					<?php endif; ?>
                     <li><a href="createaccount.php">Create Account</a></li>
 					 <li><a href="contact.php">Contact Us</a></li>
 					<li>
-					<?php if ($_SESSION['logged_in']) : ?>
+					<?php if ($_SESSION['logged_in'] > 0) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
 							<input type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
