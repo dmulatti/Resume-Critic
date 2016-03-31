@@ -1,9 +1,4 @@
-<?php
-$headextra=<<<SCRIPTS
-SCRIPTS;
-
-include_once 'header.php'; ?>
-
+<?php include_once 'header.php'; ?>
 
 	<div class="container-fluid">
         <div class="row">
@@ -19,8 +14,7 @@ include_once 'header.php'; ?>
 	
 						<div class="form-group">
 							<label for='uploaddescription' >Description:</label>
-							<textarea class="form-control-large" name='uploaddescription' id='uploaddescription' cols= "50" rows = "10" form="upload">Description</textarea> 
-							
+							<textarea class="form-control-large" name='uploaddescription' id='uploaddescription' cols= "50" rows = "10" form="upload"></textarea> 
 						</div>
 			
 						<div class="form-group">
@@ -29,17 +23,12 @@ include_once 'header.php'; ?>
 						</div>
 			
 						<input class="btn btn-primary" type='submit' name='uploadButton' value='Upload' />
+						
 					</form>
 				</div>
-
-	
-	
-	
+		
 	        </div>
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-
+        </div> <!-- /.row -->
+    </div> <!-- /.container-fluid -->
 
 <?php include_once 'footer.php'; ?>

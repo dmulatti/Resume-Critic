@@ -39,21 +39,26 @@ session_start();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+				
 					<? if ($_SESSION['logged_in'] > 0) : ?>
 						<li><a href="resumeupload.php">Upload Resume</a></li>
 					<?php else : ?>
 						<li > <a data-toggle="tooltip" data-placement="top" title="Need to be logged in!">Upload Resume</a></li>
 					<?php endif; ?>
+					
 					<?php if ($_SESSION['logged_in'] == 3) : ?>
 						<li><a href="admin.php">Admin</a></li>
 					<?php endif; ?>
+					
                     <li><a href="createaccount.php">Create Account</a></li>
-					 <li><a href="contact.php">Contact Us</a></li>
+					
+					<li><a href="contact.php">Contact Us</a></li>
+					
 					<li>
 					<?php if ($_SESSION['logged_in'] > 0) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
 							<?php echo "Welcome " . $_SESSION['uwinid'] . "!"; ?>
-							<input type='submit' name='LogoutButton' value = 'Logout'/>
+							<input class="btn btn-primary" type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
 
 					<?php else : ?>
@@ -64,7 +69,7 @@ session_start();
 								<input type='text' name='username' id='username'  maxlength="20" />
 								<label class = 'loginlabel' for='password' >Password:</label>
 								<input type='password' name='password' id='password' maxlength="60" />
-								<input type='submit' name='LoginButton' value='Login' />
+								<input class="btn btn-primary" type='submit' name='LoginButton' value='Login' />
 							</fieldset>
 						</form>
 					<?php endif; ?>
