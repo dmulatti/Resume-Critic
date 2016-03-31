@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fullname` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rating` double DEFAULT NULL,
-  `upload_date` timestamp,
+  `upload_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `hasuploaded` boolean DEFAULT FALSE,
   PRIMARY KEY (`uwinid`)
 );

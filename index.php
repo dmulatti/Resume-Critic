@@ -32,7 +32,7 @@
 							$date = $row['upload_date'];
 							$rating = $row['rating'];
 							$uwinid = $row['uwinid'];
-							echo "<tr><td><a href=\"".$uwinid.".pdf\" ".$name."</a></td><td>".$date."</td><td>".$rating."</td></tr>";
+							echo "<tr><td><a href=\"".$uwinid.".pdf\">".$name."</a></td><td>".$date."</td><td>".$rating."</td></tr>";
 						}
 					?>
 				</tbody>

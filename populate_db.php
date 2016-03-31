@@ -1,11 +1,11 @@
 <?php
 
-function addToDB($db, $uwinid, $fullname, $password, $hasuploaded){
+function addToDB($db, $uwinid, $fullname, $password, $rating, $hasuploaded){
     require ('assets/password.php');
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $db->prepare("INSERT INTO users (uwinid, fullname, password, hasuploaded) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("sssi", $uwinid, $fullname, $hashedpassword, $hasuploaded);
+    $stmt = $db->prepare("INSERT INTO users (uwinid, fullname, password, rating, hasuploaded) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssdi", $uwinid, $fullname, $hashedpassword, $rating, $hasuploaded);
     $result = $stmt->execute();
 
     if ($result == false){
@@ -20,10 +20,10 @@ function addToDB($db, $uwinid, $fullname, $password, $hasuploaded){
 include_once "dbaccess.php"; //produces $db object
 include_once 'header.php';
 
-$result1 = addToDB($db, "testone", "Test One", "password", "0");
-$result2 = addToDB($db, "testtwo", "Test Two", "password", "1");
-$result3 = addToDB($db, "testthree", "Test Three", "password", "0");
-$result4 = addToDB($db, "testfour", "Test Four", "password", "1");
+$result1 = addToDB($db, "testone", "Test One", "password", "2", "0");
+$result2 = addToDB($db, "testtwo", "Test Two", "password", "3.4", "1");
+$result3 = addToDB($db, "testthree", "Test Three", "password", "2.5", "0");
+$result4 = addToDB($db, "testfour", "Test Four", "password", "5", "1");
 
 
 
