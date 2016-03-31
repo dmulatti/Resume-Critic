@@ -13,7 +13,7 @@
 	$sql = "SELECT * FROM users WHERE username='$myusername'";
 
 	$result = $db->query($sql);
-	$row = $result->fetch_array()
+	$row = $result->fetch_array();
 	$hashedPass = $row['password'];
 	$check = password_verify($mypassword, $hashedPass);
 	$count = mysql_num_rows($result);
