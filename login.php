@@ -1,25 +1,33 @@
 <?php
-	include_once 'dbaccess.php'; 
+	include_once 'dbaccess.php';
 	require ('assets/password.php');
 	session_start(); //to ensure you are using same session
 
-	$myusername=$_POST['username']; 
-	$mypassword=$_POST['password']; 
+	$myusername=$_POST['username'];
+	$mypassword=$_POST['password'];
 
-	$myusername = stripslashes($myusername);
-	$mypassword = stripslashes($mypassword);
-	$myusername = mysql_real_escape_string($myusername);
-	$mypassword = mysql_real_escape_string($mypassword);
-	$sql = "SELECT * FROM users WHERE username='$myusername'";
 
-	$result = $db->query($sql);
-	$row = $result->fetch_array();
-	$hashedPass = $row['password'];
+	$stmt = $db->prepare("SELECT password FROM users WHERE uwinid=?");
+	$stmt->bind_param("s", $myusername);
+	$result = $stmt->execute();
+
+	if ($result == false){
+		echo'error: ';
+		echo $db->error;
+		die();
+	}
+
+	$stmt->store_result();
+	$count = $stmt->num_rows;
+
+	$stmt->bind_result($hashedPass);
+	$stmt->fetch();
+
 	$check = password_verify($mypassword, $hashedPass);
-	$count = mysql_num_rows($result);
-	
+
+
 	if($count == 1 && $check){
-		session_register("myusername");
+		$_SESSION['uwinid'] = $myusername;
 		$_SESSION['logged_in'] = 1;
 		header("Location: /index.php"); //to redirect back to "index.php" after logging out
 	}
