@@ -46,7 +46,6 @@ $_SESSION['logged_in'] = 0;
 					<li>
 					<?php if ($_SESSION['logged_in']) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
-							Hello NAME
 							<input type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
 
