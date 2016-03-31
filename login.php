@@ -12,8 +12,8 @@
 	$mypassword = mysql_real_escape_string($mypassword);
 	$sql = "SELECT * FROM users WHERE username='$myusername'";
 
-	$result = mysql_query($sql);
-	$row = mysql_fetch_array($result);
+	$result = $db->query($sql);
+	$row = $result->fetch_array()
 	$hashedPass = $row['password'];
 	$check = password_verify($mypassword, $hashedPass);
 	$count = mysql_num_rows($result);
