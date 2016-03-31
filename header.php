@@ -40,7 +40,7 @@ $_SESSION['logged_in'] = false;
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="createaccount.php">Create Account</a></li>
-					<li><a href="aboutus.php"> About Us </a></li>
+					 <li><a href="contact.php">Contact Us</a></li>
 					<li>
 					<?php if ($_SESSION['logged_in']) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
@@ -61,7 +61,7 @@ $_SESSION['logged_in'] = false;
 						</form>
 					<?php endif; ?>
 					</li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

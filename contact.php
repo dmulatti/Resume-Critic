@@ -37,9 +37,8 @@ include_once 'header.php'; ?>
                 <div class="inline">
                     <h4>Kyle Petrozzi</h4>  <h5>(<a href="mailto:petrozz1@uwindsor.ca">petrozz1@uwindsor.ca</a>)</h5>
                 </div>
-                Kyle is a fourth(?) year Computer Science student at the
-                University of Windsor. He should edit this file to add a bio for
-                the page.
+                Kyle is a fourth year Computer Science student at the
+                University of Windsor. He will graduate in spring 2016 with Applied Computing Honours Co-Op.
             </p>
             <hr>
             <p>
