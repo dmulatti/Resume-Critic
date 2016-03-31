@@ -1,14 +1,13 @@
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `uwinid` varchar(20) NOT NULL,
   `fullname` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rating` double DEFAULT NULL,
-  `upload_date` timestamp,
+  `upload_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `hasuploaded` boolean DEFAULT FALSE,
   PRIMARY KEY (`uwinid`)
 );
-
-CREATE TABLE `comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `comment_id` int NOT NULL AUTO_INCREMENT,
   `uwinid` varchar(20) NOT NULL,
   `commenters_uwinid` varchar(20) NOT NULL,
