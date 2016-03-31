@@ -3,7 +3,7 @@ $headextra=<<<SCRIPTS
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
-<script src="validate_new_user.js"></script>
+<script src="/validate/validate_createaccount.js"></script>
 SCRIPTS;
 
 

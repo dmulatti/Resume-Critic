@@ -4,6 +4,7 @@
     * and false if it already exists.
     * Used for form validation in creating a new account
     */
+    set_include_path ('../');
     include_once 'dbaccess.php';
 
     $uwinid = $_GET["uwinid"];

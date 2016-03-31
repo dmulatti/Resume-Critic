@@ -16,6 +16,8 @@ function addToDB($db, $uwinid, $fullname, $password, $rating, $hasuploaded){
     return $result;
 }
 
+set_include_path ('../');
+$dir = '../';
 include_once 'header.php';
 include_once "dbaccess.php"; //produces $db object
 

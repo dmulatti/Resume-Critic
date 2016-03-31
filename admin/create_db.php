@@ -1,4 +1,6 @@
 <?php
+set_include_path ('../');
+$dir = '../';
 include_once 'dbaccess.php';
 include_once 'header.php';
 

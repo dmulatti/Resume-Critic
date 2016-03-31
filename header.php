@@ -1,6 +1,9 @@
 <?php
 /* If $headextra is set, it will include that string in the head of the
 *  page. This can be used for extra scripts and whatnot.
+*
+* $dir should be set before this is included if file is in a subdirectory
+* ex. in admin/admin.php, $dir='../';
 */
 session_start();
 ?>
@@ -9,10 +12,10 @@ session_start();
 <head>
 	<meta charset="utf-8">
     <title>Resume Critic</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="<?php echo $dir; ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $dir; ?>assets/css/styles.css">
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo $dir; ?>assets/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();
@@ -37,7 +40,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Resume Critic</a>
+                <a class="navbar-brand" href="/index.php">Resume Critic</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -46,30 +49,30 @@ session_start();
                 <ul class="nav navbar-nav">
 
 					<? if ($_SESSION['logged_in'] > 0) : ?>
-					    <li><a href="edituser.php">Edit User Info</a></li>
-						<li><a href="resumeupload.php">Upload Resume</a></li>
+					    <li><a href="/edituser.php">Edit User Info</a></li>
+						<li><a href="/resumeupload.php">Upload Resume</a></li>
 					<?php else : ?>
-						<li><a href="createaccount.php">Create Account</a></li>
+						<li><a href="/createaccount.php">Create Account</a></li>
 						<li > <a data-toggle="tooltip" data-placement="bottom" title="Need to be logged in!">Upload Resume</a></li>
 					<?php endif; ?>
 
 					<?php if ($_SESSION['logged_in'] == 3) : ?>
-						<li><a href="admin.php">Admin</a></li>
+						<li><a href="/admin/">Admin</a></li>
 					<?php endif; ?>
 
 
 
-					<li><a href="contact.php">Contact Us</a></li>
+					<li><a href="/contact.php">Contact Us</a></li>
 
 					<li>
 					<?php if ($_SESSION['logged_in'] > 0) : ?>
-						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
+						 <form class = 'logoutlabel' id='logout' action='/logout.php' method='post'>
 							<?php echo "Welcome " . $_SESSION['uwinid'] . "!"; ?>
 							<input class="btn btn-primary" type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
 
 					<?php else : ?>
-						<form id='login' action='login.php' method='post'>
+						<form id='login' action='/login.php' method='post'>
 							<fieldset>
 								<input type='hidden' name='submitted' id='submitted' value='1'/>
 								<label class = 'loginlabel' for='username' >UWindsorID:</label>

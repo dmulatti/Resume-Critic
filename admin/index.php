@@ -1,4 +1,6 @@
 <?php
+set_include_path ('../');
+$dir = '../';
 include_once 'header.php';
 
 
@@ -44,13 +46,13 @@ else
                 <script type="text/javascript">
                     document.getElementById("dropdb").onclick = function () {
                         if (window.confirm("Are you sure? All user data will be gone forever!"))
-                            location.href = "/drop_db.php";
+                            location.href = "drop_db.php";
                             };
                     document.getElementById("populatedb").onclick = function () {
-                            location.href = "/populate_db.php";
+                            location.href = "populate_db.php";
                             };
                     document.getElementById("viewdb").onclick = function () {
-                            location.href = "/view_db.php";
+                            location.href = "view_db.php";
                             };
                 </script>
 

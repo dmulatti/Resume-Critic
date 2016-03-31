@@ -6,7 +6,7 @@ $(document).ready(function() {
                 required: true,
                 maxlength: 20,
                 pattern: /^[a-zA-Z0-9]+$/,
-                remote: 'checkuwinid.php'
+                remote: '/validate/checkuwinid.php'
             },
             password: {
                 required: true,
