@@ -26,14 +26,14 @@
 				<tbody>
 					<?php
 						$sql = "SELECT * FROM users WHERE hasuploaded = 1";
-						$result = mysql_query($sql);
-						while($row = mysql_fetch_array($result)){
+						$result = $db->query($sql);
+						while($row = $result->fetch_array()){
 							$name = $row['fullname'];
 							$date = $row['upload_date'];
 							$rating = $row['rating'];
 							$uwinid = $row['uwinid'];
 							echo "<tr><td><a href=\"".$uwinid.".pdf\" ".$name."</a></td><td>".$date."</td><td>".$rating."</td></tr>";
-						}										
+						}
 					?>
 				</tbody>
 			</table>
