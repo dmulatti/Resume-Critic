@@ -9,7 +9,7 @@ can be found in the shared google drive folder.
 - [x] Layout Design
 - [x] Database Setup
 - [x] Account Creation
-- [ ] User Authentication (Logging in and out)
+- [x] User Authentication (Logging in and out)
 - [ ] Uploading files (Resumes)
 - [ ] Ranking and Comment System
 - [x] Forms and Form Validation
