@@ -47,6 +47,7 @@ session_start();
 					<li>
 					<?php if ($_SESSION['logged_in'] > 0) : ?>
 						 <form class = 'logoutlabel' id='logout' action='logout.php' method='post'>
+							<?php echo "Welcome " . $_SESSION['uwinid'] . "!"; ?>
 							<input type='submit' name='LogoutButton' value = 'Logout'/>
 						</form>
 
