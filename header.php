@@ -49,20 +49,19 @@ session_start();
                 <ul class="nav navbar-nav">
 
 					<? if ($_SESSION['logged_in'] > 0) : ?>
-					    <li><a href="/edituser.php">Edit User Info</a></li>
 						<li><a href="/resumeupload.php">Upload Resume</a></li>
+					    <li><a href="/edituser.php">Edit User Info</a></li>
 					<?php else : ?>
-						<li><a href="/createaccount.php">Create Account</a></li>
 						<li > <a data-toggle="tooltip" data-placement="bottom" title="Need to be logged in!">Upload Resume</a></li>
+						<li><a href="/createaccount.php">Create Account</a></li>
 					<?php endif; ?>
+
+					<li><a href="/contact.php">Contact Us</a></li>
 
 					<?php if ($_SESSION['logged_in'] == 3) : ?>
 						<li><a href="/admin/">Admin</a></li>
 					<?php endif; ?>
 
-
-
-					<li><a href="/contact.php">Contact Us</a></li>
 
 					<li>
 					<?php if ($_SESSION['logged_in'] > 0) : ?>

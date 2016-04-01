@@ -43,7 +43,7 @@ include_once 'dbaccess.php';
 							$date = $row['upload_date'];
                             $hasuploaded = $row['hasuploaded'];
 
-							echo "<tr><td>"."<a href=\"edituser.php?id=".$uwinid."\">Edit</a>".
+							echo "<tr><td>"."<a href=\"/edituser.php?id=".$uwinid."\">Edit</a>".
                             "</td><td>".$uwinid.
                             "</td><td>".$fullname.
                             "</td><td>".$rating.
