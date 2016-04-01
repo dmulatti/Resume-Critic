@@ -12,10 +12,10 @@ session_start();
 <head>
 	<meta charset="utf-8">
     <title>Resume Critic</title>
-    <link rel="stylesheet" href="<?php echo $dir; ?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo $dir; ?>assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="<?php echo $dir; ?>assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();

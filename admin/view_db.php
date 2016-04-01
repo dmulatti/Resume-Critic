@@ -1,6 +1,5 @@
 <?php
 set_include_path ('../');
-$dir = '../';
 include_once 'header.php';
 if ($_SESSION['logged_in'] != 3){
     echo '<h1>Please log in as admin!</h1>';
