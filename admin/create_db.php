@@ -37,7 +37,7 @@ else
  <button id="return" class="btn btn-primary">Return to Admin Control Panel</button>
  <script type="text/javascript">
      document.getElementById("return").onclick = function () {
-         location.href = "/admin.php";
+         location.href = "/admin/";
      };
  </script>
 

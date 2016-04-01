@@ -59,7 +59,7 @@ else
                 <button id="createdb" class="btn btn-primary">Create Database</button>
                 <script type="text/javascript">
                     document.getElementById("createdb").onclick = function () {
-                        location.href = "/create_db.php";
+                        location.href = "create_db.php";
                     };
                 </script>
             <?php } ?>
