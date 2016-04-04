@@ -5,8 +5,28 @@ $headextra =<<<EXTRA
     display: inline;
 }
 </style>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+<script src="/validate/validate_contact.js"></script>
 EXTRA;
-include_once 'header.php'; ?>
+include_once 'header.php';
+include_once 'dbaccess.php';
+
+$name = '';
+$email = '';
+
+if ($_SESSION['logged_in'] > 0){
+    $email = $_SESSION['uwinid'] . '@uwindsor.ca';
+    $stmt = $db->prepare('SELECT fullname FROM users WHERE uwinid = ?');
+    $stmt->bind_param("s", $_SESSION['uwinid']);
+    $stmt->execute();
+    $stmt->bind_result($name);
+    $stmt->fetch();
+}
+?>
 
 <!-- Page Content -->
 <div class="container-fluid">
@@ -46,6 +66,29 @@ include_once 'header.php'; ?>
                 If you have any comments, an idea for the site, or have found
                 a bug somewhere, please email us! We'd love to hear what you think.
             </p>
+            <br>
+
+					<div class="well">
+						<form id="contactForm" name="contactForm" class="required" method="POST" action="contact_go.php">
+							<div class="form-group">
+								<label for="contactName">Name</label>
+								<input type="text" class="form-control" id="contactName" name="contactName" placeholder="Enter your name" value="<?php echo $name; ?>">
+							</div>
+							<div class="form-group">
+								<label for="contactEmail">Email</label>
+								<input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Enter email" value="<?php echo $email; ?>">
+							</div>
+                            <div class="form-group">
+                                <label for="textarea">Message</label>
+								<textarea id="contactMessage" name="contactMessage"></textarea>
+							</div>
+                            <div id="recaptcha" class="g-recaptcha" data-sitekey="6LfpEBwTAAAAAK_eBGjsH6nw0_5spyV9FQc6kZeU"></div>
+                            <input type="hidden" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                            <br/>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<hr>
 
         </div>
     </div>
