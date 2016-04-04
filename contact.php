@@ -68,7 +68,7 @@ if ($_SESSION['logged_in'] > 0){
             </p>
             <br>
 
-					<div class="well">
+					<div class="well form-center">
 						<form id="contactForm" name="contactForm" class="required" method="POST" action="contact_go.php">
 							<div class="form-group">
 								<label for="contactName">Name</label>
