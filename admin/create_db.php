@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `rating` double DEFAULT NULL,
   `upload_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `hasuploaded` boolean DEFAULT FALSE,
+  `description` varchar(2048),
   PRIMARY KEY (`uwinid`)
 );
 
