@@ -52,7 +52,7 @@ $stmt->fetch();
 
 
                 <!-- Forms -->
-                <div class="well form-center">
+                <div class="well">
                     <form id="edituserform" method="POST" action="edituser_go.php?id=<?php echo $uwinid; ?>">
                         <div class="form-group">
                             <label for="fullname">Full Name</label>
