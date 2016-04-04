@@ -14,7 +14,7 @@
             <hr>
 
 			<!-- Table -->
-			<h3>Tables</h3>
+			<h3>Uploaded Resumes</h3>
 			<table class="table table-striped">
 				<thead>
 					<tr>

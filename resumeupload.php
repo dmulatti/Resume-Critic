@@ -1,24 +1,38 @@
-<?php include_once 'header.php';
+<?php
+include_once 'header.php';
 include_once 'dbaccess.php';
-session_start();
+
+if ($_SESSION['logged_in'] == 0){
+	echo ('<h1>Must be logged in!</h1>');
+	die ();
+}
+
+
+
+$stmt = $db->prepare('SELECT hasuploaded FROM users WHERE uwinid=?');
+$stmt->bind_param('s', $_SESSION['uwinid']);
+$stmt->execute();
+$stmt->bind_result($hasuploaded);
+$stmt->fetch();
+$stmt->free_result();
 ?>
 
 	<div class="container-fluid">
         <div class="row">
-				<!-- Page Heading -->
-                <div class="text-center">
-                    <h1>Resume Upload</h1>
-                </div>
+
+			<?php if ($hasuploaded): ?>
+				<div class="col-sm-8">
+					<object align = "left" height="750px" width="100%" data="resume/<?php echo $_SESSION['uwinid'] ?>.pdf"></object>
+				</div>
 
 
 
-			<div class="col-sm-8">
-				<object align = "left" height="750px" width="100%" data="resume/<?php echo $_SESSION['uwinid'] ?>.pdf"></object>
-			</div>
-
-
-
-			<div class="col-sm-4">
+				<div class="col-sm-4">
+			<?php else: ?>
+				<div class="col-sm-12">
+			<?php endif; ?>
+				<h2>Upload New Resume</h2>
+				<hr>
 				<div class="well">
 
 					<form id='upload' action='upload.php' method='post' enctype="multipart/form-data">
@@ -27,13 +41,14 @@ session_start();
 							<label for='uploaddescription' >Description:</label>
 
 							<!-- php for description -->
-							<?php $stmt = $db->prepare('SELECT description FROM users WHERE uwinid=?');
+							<?php
+							    $descript = '';
+							    $stmt = $db->prepare('SELECT description FROM users WHERE uwinid=?');
                                 $stmt->bind_param('s', $_SESSION['uwinid']);
-                                $result = $stmt->execute();
-                                $stmt->store_result();
-                                $count = $stmt->num_rows;
+                                $stmt->execute();
                                 $stmt->bind_result($descript);
                                 $stmt->fetch();
+								$stmt->free_result();
                             ?>
 							<textarea align="right" class="form-control-large" name='uploaddescription'
 							id='uploaddescription' cols= "50" rows = "10" form="upload"><?php echo $descript;?></textarea>
@@ -46,6 +61,16 @@ session_start();
 
 
 						<input class="btn btn-primary" type='submit' name='uploadButton' value='Upload' />
+						
+						<?php if ($hasuploaded): ?>
+							<input class="btn btn-danger" type='button' id = 'deleteButton' name='deleteButton' value='Delete' />
+							<script type="text/javascript">
+			                    document.getElementById("deleteButton").onclick = function () {
+			                        if (window.confirm("Are you sure? Your resume will be gone forever!"))
+			                            location.href = "resumedelete.php";
+			                            };
+			                </script>
+						<?php endif; ?>
 
 					</form>
 				</div>
