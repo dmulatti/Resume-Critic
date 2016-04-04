@@ -38,6 +38,12 @@
 			echo "The file ". basename( $_FILES['fileToUpload']['name']). " has been uploaded.";
 			header("Location: /resumeupload.php");
 			
+			//update description
+			$stmt = $db->prepare("UPDATE users SET description = ? WHERE uwinid = ?");
+			$stmt->bind_param("ss",$description, $name);
+			$stmt->execute();
+			$stmt->free_result();			
+			
 			//update time
 			$stmt = $db->prepare("UPDATE users SET upload_date = CURRENT_TIMESTAMP WHERE uwinid = ?");
 			$stmt->bind_param("s", $name);
