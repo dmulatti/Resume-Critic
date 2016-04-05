@@ -40,6 +40,18 @@ if ($_SESSION['logged_in'] > 0){
             </div>
             <hr>
 
+
+            <p>
+                <h2>Open Source</h2>
+            </p>
+            <p>
+                This website is entirely open source, and the code can be found
+                on <a href="https://github.com/dmulatti/Web-Development-Project">GitHub by clicking here.</a>
+                If you find a bug, or want to improve the site,
+                feel free to fork the repo and make a pull request! Or, email us below.
+            </p>
+            <hr>
+            
             <p>
                 <h2>Who We Are</h2>
             </p>
@@ -61,6 +73,9 @@ if ($_SESSION['logged_in'] > 0){
                 University of Windsor. He will graduate in spring 2016 with Applied Computing Honours Co-Op.
             </p>
             <hr>
+
+
+
             <p>
                 <h2>Questions, Comments, Concerns?</h2>
                 If you have any comments, an idea for the site, or have found
