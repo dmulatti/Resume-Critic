@@ -54,6 +54,81 @@ include_once 'dbaccess.php';
 					?>
 				</tbody>
 			</table>
+
+            <hr>
+
+            <h3>Comments Table</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>comment_id</th>
+						<th>uwinid</th>
+						<th>commenters_uwinid</th>
+                        <th>commenters_fullname</th>
+                        <th>comment_date</th>
+                        <th>comment_data</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$sql = "SELECT * FROM comments";
+						$result = $db->query($sql);
+						while($row = $result->fetch_array()){
+                            $comment_id = $row['comment_id'];
+							$uwinid = $row['uwinid'];
+                            $commenters_uwinid = $row['commenters_uwinid'];
+							$commenters_fullname = $row['commenters_fullname'];
+                            $comment_date = $row['comment_date'];
+                            $comment_data = $row['comment_data'];
+
+							echo
+                            "<tr><td>".$comment_id.
+                            "</td><td>".$uwinid.
+                            "</td><td>".$commenters_uwinid.
+                            "</td><td>".$commenters_fullname.
+                            "</td><td>".$comment_date.
+                            "</td><td>".$comment_data.
+                            "</td></tr>";
+						}
+					?>
+				</tbody>
+			</table>
+
+            <hr>
+
+            <h3>Ratings Table</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>rating_id</th>
+						<th>uwinid</th>
+						<th>raters_uwinid</th>
+                        <th>rating</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$sql = "SELECT * FROM ratings";
+						$result = $db->query($sql);
+						while($row = $result->fetch_array()){
+                            $rating_id = $row['rating_id'];
+							$uwinid = $row['uwinid'];
+                            $raters_uwinid = $row['raters_uwinid'];
+							$rating = $row['rating'];
+
+							echo
+                            "<tr><td>".$rating_id.
+                            "</td><td>".$uwinid.
+                            "</td><td>".$raters_uwinid.
+                            "</td><td>".$rating.
+                            "</td></tr>";
+						}
+					?>
+				</tbody>
+			</table>
+
+
+
         </div>
     </div>
     <!-- /.row -->

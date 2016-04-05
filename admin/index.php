@@ -44,7 +44,7 @@ else
                 <button id="dropdb" class="btn btn-danger">Drop Database</button>
                 <script type="text/javascript">
                     document.getElementById("dropdb").onclick = function () {
-                        if (window.confirm("Are you sure? All user data will be gone forever!"))
+                        if (window.confirm("Are you sure? All data will be gone forever!"))
                             location.href = "drop_db.php";
                             };
                     document.getElementById("populatedb").onclick = function () {

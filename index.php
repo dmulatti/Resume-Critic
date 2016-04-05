@@ -9,7 +9,7 @@
 
             <!-- Page Heading -->
             <div class="text-center">
-                <h1>Welcome to the Home Page!</h1>
+                <h1>Welcome!</h1>
             </div>
             <hr>
 
@@ -30,7 +30,7 @@
 						while($row = $result->fetch_array()){
 							$name = $row['fullname'];
 							$date = $row['upload_date'];
-							$rating = $row['rating'];
+							$rating = number_format($row['rating'], 2);
 							$uwinid = $row['uwinid'];
 							echo "<tr><td><a href=\"resumeviewer.php?pdf=".$uwinid."\">".$name."</a></td><td>".$date."</td><td>".$rating."</td></tr>";
 						}

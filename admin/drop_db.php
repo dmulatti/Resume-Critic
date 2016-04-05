@@ -9,7 +9,7 @@ if ($_SESSION['logged_in'] != 3){
 include_once 'dbaccess.php';
 
 
-if ($db->multi_query('DROP TABLE comments; DROP TABLE users;') === true)
+if ($db->multi_query('DROP TABLE comments; DROP TABLE users; DROP TABLE ratings;') === true)
     echo '<h1>Success! Tables Dropped.</h1>';
 else
     echo '<h1>Failure! Error: ';

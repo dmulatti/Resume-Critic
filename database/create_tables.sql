@@ -18,3 +18,13 @@ CREATE TABLE IF NOT EXISTS `comments` (
   FOREIGN KEY (`uwinid`) REFERENCES `users`(`uwinid`),
   FOREIGN KEY (`commenters_uwinid`) REFERENCES `users`(`uwinid`)
 );
+
+CREATE TABLE IF NOT EXISTS `ratings` (
+  `rating_id` int NOT NULL AUTO_INCREMENT,
+  `uwinid` varchar(20) NOT NULL,
+  `raters_uwinid` varchar(20) NOT NULL,
+  `rating` double NOT NULL,
+  PRIMARY KEY (`rating_id`),
+  FOREIGN KEY (`uwinid`) REFERENCES `users`(`uwinid`),
+  FOREIGN KEY (`raters_uwinid`) REFERENCES `users`(`uwinid`)
+);

@@ -70,6 +70,7 @@ $stmt->fetch();
 $stmt->free_result();
 
 $hasrated=false;
+$myrating=0;
 
 if ($loggedin){
     $stmt = $db->prepare('SELECT EXISTS(SELECT 1 FROM ratings WHERE uwinid = ? AND raters_uwinid = ?)');
@@ -79,7 +80,6 @@ if ($loggedin){
     $stmt->fetch();
     $stmt->free_result();
 }
-
 if ($hasrated){
     $stmt = $db->prepare('SELECT rating FROM ratings WHERE uwinid = ? AND raters_uwinid = ?');
     $stmt->bind_param ('ss', $uwinid, $myuwinid);

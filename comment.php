@@ -61,15 +61,18 @@ if(!empty($comment)){
 //Always reset rating
 
 $rating = 0;
+$numRatings = 0;
 
 $stmt = $db->prepare('SELECT rating FROM ratings WHERE uwinid=?');
 $stmt->bind_param('s', $uwinid);
 $stmt->execute();
-$stmt->store_result();
-$numRatings = $stmt->num_rows;
 $stmt->bind_result($aRating);
-while ($stmt->fetch())
-	$rating += $aRating;
+while ($stmt->fetch()){
+	if ($aRating > 0){
+		$rating += $aRating;
+		$numRatings += 1;
+	}
+}
 $newRating = $rating/$numRatings;
 $stmt->free_result();
 
