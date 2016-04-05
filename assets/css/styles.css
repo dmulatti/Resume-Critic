@@ -31,6 +31,11 @@ body { padding-top: 70px; }
 }
 
 
+.comments{
+	height: 450px;
+	overflow-y:scroll;
+}
+
 .form-control-large {
   resize: none;
   display: block;
