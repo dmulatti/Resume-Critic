@@ -57,10 +57,12 @@ include_once 'dbaccess.php';
 
             <hr>
 
+            <a name="comments"></a>
             <h3>Comments Table</h3>
 			<table class="table table-striped">
 				<thead>
 					<tr>
+                        <th></th>
 						<th>comment_id</th>
 						<th>uwinid</th>
 						<th>commenters_uwinid</th>
@@ -82,7 +84,8 @@ include_once 'dbaccess.php';
                             $comment_data = $row['comment_data'];
 
 							echo
-                            "<tr><td>".$comment_id.
+                            "<tr><td>"."<a href=\"/admin/delete_comment.php?id=".$comment_id."\">Delete</a>".
+                            "</td><td>".$comment_id.
                             "</td><td>".$uwinid.
                             "</td><td>".$commenters_uwinid.
                             "</td><td>".$commenters_fullname.
