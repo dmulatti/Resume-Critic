@@ -20,6 +20,8 @@
 					else if ($error == 3){
 						echo "Sorry, only PDFs can be uploaded! Your file was not uploaded.";	
 					}
+					else if ($error == 4)
+						echo "Sorry, wrong username or password";
 					else{
 						echo "Sorry, something went wrong and your file was not uploaded.";
 					}

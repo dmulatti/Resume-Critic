@@ -50,5 +50,6 @@
 	}
 	else {
 		echo "Wrong Username or Password";
+		header("Location: /uploaderror.php?error=4");
 	}
 ?>
