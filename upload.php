@@ -37,23 +37,17 @@
 			echo "The file ". basename( $_FILES['fileToUpload']['name']). " has been uploaded.";
 			header("Location: /resumeviewer.php?pdf=".$name);
 
-			//update description
-			$stmt = $db->prepare("UPDATE users SET description = ? WHERE uwinid = ?");
-			$stmt->bind_param("ss",$description, $name);
+
+			//upadte description, time, and boolean
+			$stmt = $db->prepare('UPDATE users 	SET	description = ?,
+													upload_date = CURRENT_TIMESTAMP,
+													hasuploaded = 1
+												WHERE
+													uwinid = ?');
+			$stmt->bind_param('ss', $description, $name);
 			$stmt->execute();
 			$stmt->free_result();
 
-			//update time
-			$stmt = $db->prepare("UPDATE users SET upload_date = CURRENT_TIMESTAMP WHERE uwinid = ?");
-			$stmt->bind_param("s", $name);
-			$stmt->execute();
-			$stmt->free_result();
-
-			//update boolean
-			$stmt = $db->prepare("UPDATE users SET hasuploaded = 1 WHERE uwinid = ?");
-			$stmt->bind_param("s", $name);
-			$stmt->execute();
-			$stmt->free_result();
 
 
 			//Insert update into comments
