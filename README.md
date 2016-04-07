@@ -10,9 +10,9 @@ can be found in the shared google drive folder.
 - [x] Database Setup
 - [x] Account Creation
 - [x] User Authentication (Logging in and out)
-- [ ] Uploading files (Resumes)
-- [ ] Ranking and Comment System
+- [x] Uploading files (Resumes)
+- [x] Ranking and Comment System
 - [x] Forms and Form Validation
-- [ ] HTML/SQL Injection Attack Testing
+- [x] HTML/SQL Injection Attack Testing
 - [x] Contact Us Page
 - [ ] Documentation

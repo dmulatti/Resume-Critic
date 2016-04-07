@@ -14,90 +14,228 @@
 
 
 \begin{document}
-
-
     \maketitle
+
+
     \section{Purpose}
-    \paragraph{}
-    The purpose of the website is to be able to upload your resume and have it
-    critiqued and be able to critique other resumes with comments. Once you read
-    comments, you are able to read them and reupload/update your resume. You
-    must create an account to post comments and upload your resume in order keep
-    track of each comment and resume.
+        \paragraph{}
+        The purpose of the website is to be able to upload your
+        resume and have it critiqued and be able to critique other resumes with
+        comments. Once you read comments, you are able to read them and
+        reupload/update your resume. You must create an account to post comments
+        and upload your resume in order keep track of each comment and resume.
 
     \section{Installation}
-    \paragraph{}
-    To install the website, simply extract the source code into your
-    \emph{public\_html} folder. Then, replace the values in \emph{dbaccess.php}
-    with the appropriate information for the database you'd like to use.
-    Lastly, navigate to ``/admin/create\_db.php'' to create the database, then
-    navigate to ``/admin/populate\_db.php'' to populate the database with four
-    test users, and an admin account.
+        \paragraph{}
+        To install the website, simply extract the source code into your
+        \emph{public\_html} folder. Then, replace the values in
+        \emph{dbaccess.php} with the appropriate information for the database
+        you'd like to use. Lastly, navigate to ``/admin/create\_db.php'' to
+        create the database, then navigate to ``/admin/populate\_db.php'' to
+        populate the database with four test users, and an admin account.
 
-    \begin{center}
-        \begin{tabular}{ | l | l | }
-            \multicolumn{2}{c}{Login Info} \\
-            \hline
-            User Name & Password \\ \hline
-            admin & password \\ \hline
-            testone & password \\ \hline
-            testtwo & password \\ \hline
-            testthree & password \\ \hline
-            testfour & password \\
-            \hline
-        \end{tabular}
-    \end{center}
+        \begin{center}
+            \begin{tabular}{ | l | l | }
+                \multicolumn{2}{c}{Login Info} \\
+                \hline
+                User Name & Password \\ \hline
+                admin & password \\ \hline
+                testone & password \\ \hline
+                testtwo & password \\ \hline
+                testthree & password \\ \hline
+                testfour & password \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+        \paragraph{}
+        For a working demo, this site is live at
+        \href{334.mulatti.com}{334.mulatti.com}.
+
+
+    \section{Database Design}
+        \paragraph{}
+        The database for this site contains three tables: users, comments, and
+        ratings. The users table stores user info, including uwinid, hashed
+        password, full name, rating on their resume, resume upload date,
+        description for their resume, and a boolean indicating whether they have
+        uploaded a resume or not.
+
+        \paragraph{}
+        The comments table stores an auto incrementing comment id, the uwinid of
+        the commenter, the uwinid of the user the comment is for, the date of
+        the comment, and the comment itself.
+
+        \paragraph{}
+        The ratings table is almost identical to the comments table, but does
+        not store the date, and is used to store ratings represented as a double
+        rather than comments.
 
     \section{Site Walkthrough}
 
-    \subsection{Admin Control Panel}
-    \paragraph{}
-    When logged in as admin, an ``Admin'' option appears in the site header
-    that will allow one to access the admin control panel. In this, the admin can
-    view all of the tables in the database, edit any user, delete any comment,
-    drop the database, create the database and populate the database with the
-    test data shown above.
+        \subsection{Design and CSS}
+        \paragraph{}
+        Bootstrap is used for the design of this site, with the assistance
+        of a kickoff template provided by maxdesign \cite{css}. There are
+        modifications made to this, located in /assets/css/styles.css.
 
-    \paragraph{}
-    Also, when logged in as admin, the edit user page is extended to include
-    more options, and allows the admin to edit any user they wish.
+        \subsection{Admin Control Panel}
+        \paragraph{}
+        When logged in as admin, an ``Admin'' option appears in the site header
+        that will allow one to access the admin control panel. In this, the
+        admin can view all of the tables in the database, edit any user, delete
+        any comment, drop the database, create the database and populate the
+        database with the test data shown above.
+
+        \paragraph{}
+        Also, when logged in as admin, the edit user page is extended to include
+        more options, and allows the admin to edit any user they wish.
 
 
-    \subsection{header.php}
-    \paragraph{}
-    The header is included within every page that is viewed by the user. It
-    contains most of the sites navigation features and allows the users to
-    easily navigate the website. It is dynamic as it changes with who is logged
-    in (such as the admin, admin pages will appear). It contains different
-    links as well as the login form. The login button brings you to the
-    login.php page. It uses the session variable ``logged\_in'' to control most
-    of the dynamic content.
+        \subsection{Header}
+        \paragraph{}
+        The header is included within every page that is viewed by the user. It
+        contains most of the sites navigation features and allows the users to
+        easily navigate the website. It is dynamic as it changes with who is
+        logged in (such as the admin, admin pages will appear). It contains
+        different links as well as the login form. The login button brings you
+        to the login.php page. It uses the session variable ``logged\_in'' to
+        control most of the dynamic content.
 
-    \subsection{login.php and logout.php}
-    \paragraph{}
-    The login.php is relatively simple. It compares the password sent within the
-    form to the hashed password stored in the database associated with the name
-    sent in the form. If it matches it sets the ``logged\_in'' session variable
-    to 1, and then redirects back to the index page. It also checks if the user
-    logging in is the admin, and if so, changes the session variable to 3. This
-    uses SQL and stores who is logged in. It also has an error page if the wrong
-    username or password is entered.
+        \subsection{Footer}
+        \paragraph{}
+        The footer is included in every page, and is simply the closing
+        $\langle$body$\rangle$ and $\langle$html$\rangle$ tags, as well as a
+        centered message including an emoji. The emoji is generated using
+        Twitter's \emph{twemoji} plugin \cite{twemoji}.
 
-    \subsection{resumeupload.php}
-    \paragraph{}
-    This page is used to upload/edit your own resume page. If you are logged in
-    you can add a resume and description. If you already have a resume uploaded,
-    it shows it to you, and auto fills the description with your last
-    description used. When you use the upload button it calls the upload.php
-    class. This class checks if the file uploaded is a application/pdf MIME
-    type, if it comes from the POST function, and finally if it is not too large
-    of a file. If all of these checks pass, then it saves the file as
-    \emph{uwinid}.pdf, \emph{uwinid} being the username of the current user. It
-    also updates the upload date, \emph{has\_uploaded}, and the description
-    columns within the database to the user who uploaded. It then redirects back
-    to the resume viewer page. It also has error pages that tell the user what
-    went wrong if there is a upload error.
+        \subsection{Create Account}
+        \paragraph{}
+        Here, there is a is a web form that takes a uwinid, password, and full
+        name to create a new account. There is also a captcha, provided using
+        Google's reCAPTCHA api, to verify that the person signing up for an
+        account is indeed human. The form uses the jQuery Validation plugin
+        \cite{validate} to validate all the fields, including AJAX calls to the
+        database to ensure that a username is not taken. It will also ensure
+        that the password is at least 8 characters long, and that the full name
+        only has alphanumeric characters in it.
 
+        \paragraph{}
+        On submission, all fields are sent as POST variables to
+        \emph{createaccount\_go.php} which will insert a new user into the
+        database. The password is hashed using the \emph{password\_hash()}
+        function, provided by ircmaxwell \cite{password}.
+
+        \subsection{Login and Logout}
+        \paragraph{}
+        The login.php is relatively simple. It compares the password sent within
+        the form to the hashed password stored in the database associated with
+        the name sent in the form. If it matches it sets the \emph{logged\_in}
+        session variable to 1, and then redirects back to the index page. It
+        also checks if the user logging in is the admin, and if so, changes the
+        session variable to 3. It also has an error page if the wrong username
+        or password is entered.
+
+        \subsection{Edit User}
+        \paragraph{}
+        The edit user link appears in the header whenever a user is logged in. A
+        user can then edit their Full Name or their password. If an admin is
+        logged in, then the edit user page is extended, allowing the admin to
+        change many more options for any user they wish.
+
+        \subsection{Resume Upload}
+        \paragraph{}
+        This page is used to upload/edit your own resume page. If you are logged
+        in you can add a resume and description. If you already have a resume
+        uploaded, it shows it to you, and auto fills the description with your
+        last description used. When you use the upload button it calls the
+        upload.php class. This class checks if the file uploaded is a
+        application/pdf MIME type, if it comes from the POST function, and
+        finally if it is not too large of a file. If all of these checks pass,
+        then it saves the file as \emph{uwinid}.pdf, \emph{uwinid} being the
+        username of the current user. It also updates the upload date,
+        \emph{has\_uploaded}, and the description columns within the database to
+        the user who uploaded.
+        It also will add a comment to the resume, notifying that a new resume
+        has been uploaded.
+        It then redirects back to the resume viewer page.
+        It also has error pages that tell the user what went wrong if there is a
+        upload error.
+
+        \subsection{Resume Viewer}
+        \paragraph{}
+        When a name on the homepage is clicked, the user is brought to a page
+        which displays the resume as an embedded object on the left, and the
+        description, upload date, and comments on the resume on the right. Above
+        the resume there is a current star rating of the resume, gathered by
+        what the users have voted.
+
+        \paragraph{}
+        If the user is logged in, below the comments there is a textarea to add
+        their own comment, and an option to rate the resume out of five stars.
+        The star rating system is powered by a jQuery plugin for bootstrap made
+        by GitHub user \emph{kartik-v} \cite{stars}.
+
+        \subsection{Contact Us}
+        \paragraph{}
+        The ``Contact Us'' page displays our names, some information about
+        ourselves, and our email addresses. There is also a link to the GitHub
+        page that our code is available on, and a form including a TinyMCE
+        \cite{tinymce} editor to send an email directly to us using the PHP
+        \emph{mail()} function.
+
+        \paragraph{}
+        On submission of the contact form, the user is redirected to
+        \emph{contact\_go.php} which takes the POST variables from the form,
+        validates the captcha, and processes the message given from the TinyMCE
+        editor through XSLT to strip out everything that isn't a
+        $\langle$b$\rangle$, $\langle$u$\rangle$, or $\langle$i$\rangle$
+        tag.
+
+
+
+
+
+
+    \newpage
+    \begin{thebibliography}{9}
+
+        \bibitem{css}
+          russmaxdesign,
+          \emph{Bootstrap Kickoff Template}\\
+          Available at:
+          \href{https://github.com/russmaxdesign/01-bootstrap-kickoff-template}
+               {https://github.com/russmaxdesign/01-bootstrap-kickoff-template}
+
+        \bibitem{twemoji}
+        Twitter,
+        \emph{Twitter Emoji For Everyone}\\
+        Available at: \href{https://github.com/twitter/twemoji}
+                        {https://github.com/twitter/twemoji}
+
+        \bibitem{validate}
+        jQuery Validation\\
+        Available at: \href{http://jqueryvalidation.org/}
+                           {http://jqueryvalidation.org/}
+
+        \bibitem{password}
+        ircmaxwell,
+        \emph{password\_compat}\\
+        Available at: \href{https://github.com/ircmaxell/password_compat}
+                           {https://github.com/ircmaxell/password\_compat}
+
+       \bibitem{stars}
+       kartik-v,
+       \emph{bootstrap-star-rating}\\
+       Available at: \href{https://github.com/kartik-v/bootstrap-star-rating}
+                          {https://github.com/kartik-v/bootstrap-star-rating}
+
+       \bibitem{tinymce}
+       TinyMCE\\
+       Available at: \href{https://www.tinymce.com/}
+                          {https://www.tinymce.com/}
+
+    \end{thebibliography}
 
 
 
