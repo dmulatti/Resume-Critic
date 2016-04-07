@@ -1,0 +1,104 @@
+\documentclass[11pt,letterpaper,titlepage]{article}
+\usepackage[margin=2.54cm]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+
+\title{Resume Critic - Documentation}
+\author{David Mulatti, Kyle Petrozzi}
+\date{}
+
+
+\begin{document}
+
+
+    \maketitle
+    \section{Purpose}
+    \paragraph{}
+    The purpose of the website is to be able to upload your resume and have it
+    critiqued and be able to critique other resumes with comments. Once you read
+    comments, you are able to read them and reupload/update your resume. You
+    must create an account to post comments and upload your resume in order keep
+    track of each comment and resume.
+
+    \section{Installation}
+    \paragraph{}
+    To install the website, simply extract the source code into your
+    \emph{public\_html} folder. Then, replace the values in \emph{dbaccess.php}
+    with the appropriate information for the database you'd like to use.
+    Lastly, navigate to ``/admin/create\_db.php'' to create the database, then
+    navigate to ``/admin/populate\_db.php'' to populate the database with four
+    test users, and an admin account.
+
+    \begin{center}
+        \begin{tabular}{ | l | l | }
+            \multicolumn{2}{c}{Login Info} \\
+            \hline
+            User Name & Password \\ \hline
+            admin & password \\ \hline
+            testone & password \\ \hline
+            testtwo & password \\ \hline
+            testthree & password \\ \hline
+            testfour & password \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \section{Site Walkthrough}
+
+    \subsection{Admin Control Panel}
+    \paragraph{}
+    When logged in as admin, an ``Admin'' option appears in the site header
+    that will allow one to access the admin control panel. In this, the admin can
+    view all of the tables in the database, edit any user, delete any comment,
+    drop the database, create the database and populate the database with the
+    test data shown above.
+
+    \paragraph{}
+    Also, when logged in as admin, the edit user page is extended to include
+    more options, and allows the admin to edit any user they wish.
+
+
+    \subsection{header.php}
+    \paragraph{}
+    The header is included within every page that is viewed by the user. It
+    contains most of the sites navigation features and allows the users to
+    easily navigate the website. It is dynamic as it changes with who is logged
+    in (such as the admin, admin pages will appear). It contains different
+    links as well as the login form. The login button brings you to the
+    login.php page. It uses the session variable ``logged\_in'' to control most
+    of the dynamic content.
+
+    \subsection{login.php and logout.php}
+    \paragraph{}
+    The login.php is relatively simple. It compares the password sent within the
+    form to the hashed password stored in the database associated with the name
+    sent in the form. If it matches it sets the ``logged\_in'' session variable
+    to 1, and then redirects back to the index page. It also checks if the user
+    logging in is the admin, and if so, changes the session variable to 3. This
+    uses SQL and stores who is logged in. It also has an error page if the wrong
+    username or password is entered.
+
+    \subsection{resumeupload.php}
+    \paragraph{}
+    This page is used to upload/edit your own resume page. If you are logged in
+    you can add a resume and description. If you already have a resume uploaded,
+    it shows it to you, and auto fills the description with your last
+    description used. When you use the upload button it calls the upload.php
+    class. This class checks if the file uploaded is a application/pdf MIME
+    type, if it comes from the POST function, and finally if it is not too large
+    of a file. If all of these checks pass, then it saves the file as
+    \emph{uwinid}.pdf, \emph{uwinid} being the username of the current user. It
+    also updates the upload date, \emph{has\_uploaded}, and the description
+    columns within the database to the user who uploaded. It then redirects back
+    to the resume viewer page. It also has error pages that tell the user what
+    went wrong if there is a upload error.
+
+
+
+
+\end{document}
