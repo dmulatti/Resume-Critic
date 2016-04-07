@@ -24,9 +24,59 @@ $email = filter_var($_POST['contactEmail'], FILTER_VALIDATE_EMAIL);
 $message = str_replace("\n.", "\n..", $_POST['contactMessage']);
 
 
+// NOTE: All code here is borrowed from Paul Preney
+// NOTE: We will wrap $form_msg into a basic HTML5 document to help tidy...
+$message = '<!DOCTYPE html><head><title></title></head><body>'.$message.'</body></html>';
+
+$tidy =
+  tidy_parse_string(
+    $message,
+    array(
+      'clean' => true,
+      'doctype' => 'auto',
+      'output-xhtml' => true,
+      'show-body-only' => true,
+      'drop-empty-paras' => true,
+      'drop-font-tags' => true,
+      'drop-proprietary-attributes' => true,
+      'wrap' => 0,
+    ),
+    'UTF8'  // Use UTF-8 encoding.
+  )
+;
+
+// Clean up the parsed document...
+$tidy->cleanRepair();
+
+// Before pumping $tidy->Body()->value into the XSLT processor, first
+// place the contents within the <body> tag into a string surrounded
+// by a <div> tag...
+$almost_clean = '<div>'.$tidy->value.'</div>';
+
+// Load the XSLT processor and the the XSL script...
+$xsldoc = new DOMDocument();
+$xsldoc->load('contact_clean.xsl');
+
+$xslproc = new XSLTProcessor();
+$xslproc->importStyleSheet($xsldoc);
+
+// Load up the document to be processed as a DOMDocument...
+$doc = new DOMDocument();
+// See: http://php.net/manual/en/class.domdocument.php
+// If from a file, use $doc->load('filename.xml');
+// If XML/XHTML, use...
+$doc->loadHTML($almost_clean);
+
+// Invoke the XSLTProcessor and output the results...
+
+$message = $xslproc->transformToXML($doc);
+
+
 $to = "mulatti@uwindsor.ca";
 $subject = "Resume Critic Contact Form";
-$headers = "From: $name <$email>\r\nReply-To: $email";
+$headers = "From: $name <$email>\r\nReply-To: $email\r\n";
+$headers .= 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 if ($email != false){
     if (mail ($to, $subject, $message, $headers))

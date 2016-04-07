@@ -66,11 +66,11 @@ $stmt->fetch();
                         <?php if($admin): ?>
                             <div class="form-group">
                                 <label for="rating">Rating</label>
-                                <input type="text" class="form-control" id="rating" name = "rating" placeholder="Bob Loblaw" value="<?php echo $rating; ?>" required>
+                                <input type="text" class="form-control" id="rating" name = "rating" placeholder="Value 0-5" value="<?php echo $rating; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="hasuploaded">hasuploaded</label>
-                                <input type="text" class="form-control" id="hasuploaded" name = "hasuploaded" placeholder="Bob Loblaw" value="<?php echo $hasuploaded; ?>" required>
+                                <input type="text" class="form-control" id="hasuploaded" name = "hasuploaded" placeholder="0 or 1" value="<?php echo $hasuploaded; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="uwinid">UWinID to Update</label>

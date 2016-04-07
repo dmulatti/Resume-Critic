@@ -6,7 +6,12 @@ $headextra =<<<EXTRA
 }
 </style>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
+<script>tinymce.init(
+{
+    selector:'textarea',
+    menubar:'file edit view',
+    toolbar:'bold italic'
+});</script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
@@ -51,7 +56,7 @@ if ($_SESSION['logged_in'] > 0){
                 feel free to fork the repo and make a pull request! Or, email us below.
             </p>
             <hr>
-            
+
             <p>
                 <h2>Who We Are</h2>
             </p>

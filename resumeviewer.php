@@ -15,7 +15,7 @@ include_once 'header.php';
 
 
 if (!isset($_GET['pdf']))
-    die ("Error!");
+    die ("<h1>No user specified!</h1>");
 
 $uwinid = stripslashes($_GET['pdf']);
 
@@ -47,27 +47,14 @@ if (!$hasuploaded)
     die ('<h1>user has not uploaded a resume :(</h1>');
 
 
-$stmt = $db->prepare('SELECT fullname FROM users WHERE uwinid = ?');
-$stmt->bind_param ('s', $uwinid);
+$stmt = $db->prepare('  SELECT fullname, description, rating, upload_date
+                        FROM users WHERE uwinid = ?');
+$stmt->bind_param('s', $uwinid);
 $stmt->execute();
-$stmt->bind_result($fullname);
+$stmt->bind_result($fullname, $description, $rating, $upload_date);
 $stmt->fetch();
 $stmt->free_result();
 
-
-$stmt = $db->prepare('SELECT description FROM users WHERE uwinid = ?');
-$stmt->bind_param ('s', $uwinid);
-$stmt->execute();
-$stmt->bind_result($description);
-$stmt->fetch();
-$stmt->free_result();
-
-$stmt = $db->prepare('SELECT rating FROM users WHERE uwinid = ?');
-$stmt->bind_param ('s', $uwinid);
-$stmt->execute();
-$stmt->bind_result($rating);
-$stmt->fetch();
-$stmt->free_result();
 
 $hasrated=false;
 $myrating=0;
@@ -122,7 +109,8 @@ if ($hasrated){
              <div class="col-sm-4">
              <div class="comments">
                  <h3>Description</h3>
-                 <?php echo $description; ?>
+                 <?php echo $description; ?><br>
+                 <small>Uploaded: <?php echo $upload_date; ?></small>
                  <hr>
                  <h3>Comments</h3>
                  <hr>

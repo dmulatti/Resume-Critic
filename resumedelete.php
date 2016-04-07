@@ -13,10 +13,21 @@ $file = "resume/" . $uwinid . ".pdf";
 
 if (file_exists($file)){
 	unlink($file);
-	$stmt = $db->prepare('UPDATE users SET hasuploaded = 0, description=NULL WHERE uwinid = ?');
+	$stmt = $db->prepare('UPDATE users SET hasuploaded = 0, description=NULL, rating=NULL WHERE uwinid = ?');
 	$stmt->bind_param('s', $uwinid);
 	$stmt->execute();
 	$stmt->free_result();
+
+	$stmt = $db->prepare('DELETE FROM comments WHERE uwinid = ?');
+	$stmt->bind_param('s', $uwinid);
+	$stmt->execute();
+	$stmt->free_result();
+
+	$stmt = $db->prepare('DELETE FROM ratings WHERE uwinid = ?');
+	$stmt->bind_param('s', $uwinid);
+	$stmt->execute();
+	$stmt->free_result();
+
 	$success = true;
 }
 else {

@@ -25,7 +25,7 @@
 				</thead>
 				<tbody>
 					<?php
-						$sql = "SELECT * FROM users WHERE hasuploaded = 1";
+						$sql = "SELECT * FROM users WHERE hasuploaded = 1 ORDER BY upload_date DESC";
 						$result = $db->query($sql);
 						while($row = $result->fetch_array()){
 							$name = $row['fullname'];

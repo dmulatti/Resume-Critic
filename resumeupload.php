@@ -32,6 +32,7 @@ $stmt->free_result();
 				<div class="col-sm-12">
 			<?php endif; ?>
 				<h2>Upload New Resume</h2>
+				<h5>Note: This will overwrite any previously uploaded resumes!</h5>
 				<hr>
 				<div class="well">
 
@@ -56,12 +57,12 @@ $stmt->free_result();
 
 						<div class="form-group">
 							<label for='fileToUpload' >File:</label>
-							<input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
+							<input class="form-control" type="file" accept="application/pdf" name="fileToUpload" id="fileToUpload">
 						</div>
 
 
 						<input class="btn btn-primary" type='submit' name='uploadButton' value='Upload' />
-						
+
 						<?php if ($hasuploaded): ?>
 							<input class="btn btn-danger" type='button' id = 'deleteButton' name='deleteButton' value='Delete' />
 							<script type="text/javascript">

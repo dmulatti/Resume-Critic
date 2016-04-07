@@ -2,6 +2,7 @@
 set_include_path ('../');
 include_once 'dbaccess.php';
 include_once 'header.php';
+require ('assets/password.php');
 
 $createtables=<<<EOF
 CREATE TABLE IF NOT EXISTS `users` (
@@ -14,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `description` varchar(2048),
   PRIMARY KEY (`uwinid`)
 );
+
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `comment_id` int NOT NULL AUTO_INCREMENT,

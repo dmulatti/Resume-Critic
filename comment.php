@@ -40,6 +40,10 @@ if (isset($rating)){
 
 
 if(!empty($comment)){
+
+	//prevent images and links and whatnot from showing up in comments
+	$comment = strip_tags($comment, '<b><i><u>');
+
     $stmt = $db->prepare('SELECT fullname FROM users WHERE uwinid = ?');
     $stmt->bind_param ('s', $commenters_uwinid);
     $stmt->execute();
