@@ -11,7 +11,7 @@
 />
 
 <!-- The purpose of this document is to strip all XHTML tags
-     except <b>, <i>, and <p>. Hyperlinks are allowed
+     except <div>, <strong>, and <em>. Hyperlinks are allowed
      if and only if their href attributes start with
      the URL prefix defined in $site-url-prefix within
      this file (see below).
@@ -26,7 +26,7 @@
   <xsl:apply-templates />
 </xsl:template>
 
-<!-- Preserve <div> and <strong> and continue processing content
+<!-- Preserve <div> and <strong> and <em> and continue processing content
      inside these tags... -->
 <xsl:template match="div|strong|em">
   <!-- xsl:element constructs a new tag with the name specified

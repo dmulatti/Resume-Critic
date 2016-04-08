@@ -1,9 +1,6 @@
 <?php
 /* If $headextra is set, it will include that string in the head of the
 *  page. This can be used for extra scripts and whatnot.
-*
-* $dir should be set before this is included if file is in a subdirectory
-* ex. in admin/admin.php, $dir='../';
 */
 session_start();
 ?>

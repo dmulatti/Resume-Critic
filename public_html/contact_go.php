@@ -24,7 +24,7 @@ $email = filter_var($_POST['contactEmail'], FILTER_VALIDATE_EMAIL);
 $message = str_replace("\n.", "\n..", $_POST['contactMessage']);
 
 
-// NOTE: All code here is borrowed from Paul Preney
+// NOTE: Most code here is borrowed from Paul Preney
 // NOTE: We will wrap $form_msg into a basic HTML5 document to help tidy...
 $message = '<!DOCTYPE html><head><title></title></head><body>'.$message.'</body></html>';
 
