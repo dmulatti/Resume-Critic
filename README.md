@@ -15,4 +15,4 @@ can be found in the shared google drive folder.
 - [x] Forms and Form Validation
 - [x] HTML/SQL Injection Attack Testing
 - [x] Contact Us Page
-- [ ] Documentation
+- [x] Documentation
