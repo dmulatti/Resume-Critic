@@ -4,6 +4,8 @@ Resume Critique Website for a Final Project. Written in PHP and uses a MySQL
 database. dbaccess.php and assets/recaptcha/secret.php are .gitignored and 
 can be found in the shared google drive folder.
 
+Live at [resumecritic.ca](http://resumecritic.ca)
+
 ######TODO:
 
 - [x] Layout Design
