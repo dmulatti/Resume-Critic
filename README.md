@@ -1,8 +1,8 @@
 Web-Development-Project
 =======================
 Resume Critique Website for a Final Project. Written in PHP and uses a MySQL 
-database. dbaccess.php and assets/recaptcha/secret.php are .gitignored and 
-can be found in the shared google drive folder.
+database. dbaccess.php and assets/recaptcha/secret.php must be modified to 
+include the appropriate data.
 
 Live at [resumecritic.ca](http://resumecritic.ca)
 
