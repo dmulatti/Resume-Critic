@@ -1,4 +1,4 @@
-Web-Development-Project
+Resume-Critic
 =======================
 Resume Critique Website for a Final Project. Written in PHP and uses a MySQL 
 database. dbaccess.php and assets/recaptcha/secret.php must be modified to 
